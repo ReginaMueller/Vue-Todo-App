@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Todo App mit Vue</title>
+</head>
+
+<body id="body">
+    <div id="app">
+
+        <h1>TODO</h1>
+        <div class="filter">
+            <label id="all" @click="changeFilter">All</label>
+            <label id="open" @click="changeFilter">Open</label>
+            <label id="done" @click="changeFilter">Done</label>
+        </div>
+
+        <form class="add" id="add-form" @submit.prevent="addTodo">
+            <input id="input" type="text" placeholder="what's up?" autocomplete="input" v-model="currentDescription">
+        </form>
+
+        <div class="todo-list" id="todo-list">
+            <template v-for="todo of filteredTodos" :key="todo.id">
+
+                <form :class="todoType(todo)" @click="changeDone(todo)">{{todo.description}}</form>
+            </template>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
