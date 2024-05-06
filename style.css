@@ -42,7 +42,16 @@ h1 {
   width: 100%;
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.passivFilter {
+  background-color: inherit;
   color: white;
+}
+
+.activFilter {
+  background-color: white;
+  color: midnightblue;
 }
 
 .filter label + label {
@@ -53,7 +62,6 @@ form {
   width: auto;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-left: 0.5rem;
   margin-top: 1rem;
   border-radius: 0.5rem;
   background-color: white;
@@ -76,8 +84,7 @@ form {
 .add input {
   width: 95%;
   border: none;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem;
   font-family: "Grape Nuts";
   font-size: large;
   outline: none;
@@ -97,6 +104,7 @@ h2 {
   margin: 0;
   z-index: 2;
   font-size: 25px;
+  color: white;
 }
 
 input:-webkit-autofill::first-line,

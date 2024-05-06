@@ -14,9 +14,9 @@
 
         <h1>TODO</h1>
         <div class="filter">
-            <label id="all" @click="changeFilter">All</label>
-            <label id="open" @click="changeFilter">Open</label>
-            <label id="done" @click="changeFilter">Done</label>
+            <label id="all" :class="isActive('all')" @click="changeFilter">All</label>
+            <label id="open" :class="isActive('open')" @click="changeFilter">Open</label>
+            <label id="done" :class="isActive('done')" @click="changeFilter">Done</label>
         </div>
 
         <form class="add" id="add-form" @submit.prevent="addTodo">
@@ -24,9 +24,17 @@
         </form>
 
         <div class="todo-list" id="todo-list">
-            <template v-for="todo of filteredTodos" :key="todo.id">
+            <template v-for="(todo, index) of filteredTodos" :key="todo.id">
 
-                <form :class="todoType(todo)" @click="changeDone(todo)">{{todo.description}}</form>
+                <form :class="todoType(todo)" @click="changeDone(todo)">
+                    <span>{{todo.description}}</span>
+                    <h2>
+                        <i class="fa-solid fa-trash-can" @click="deleteTodo(index)"></i>
+                    </h2>
+                    <h2>
+                        <i class=" fa-regular fa-square-check"></i>
+                    </h2>
+                </form>
             </template>
         </div>
 

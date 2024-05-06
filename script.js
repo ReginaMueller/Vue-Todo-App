@@ -33,14 +33,20 @@ Vue.createApp({
       return todo.done ? "done" : "";
     },
 
+    isActive(filter) {
+      return this.filter === filter ? "activFilter" : "passivFilter";
+    },
+
     changeDone(todo) {
       todo.done = !todo.done;
     },
 
     changeFilter(event) {
       this.filter = event.target.id;
-      event.target.style.backgroundColor = "white";
-      event.target.style.color = "Midnightblue";
+    },
+
+    deleteTodo(index) {
+      this.todos.splice(index, 1);
     },
   },
 
@@ -161,12 +167,12 @@ Vue.createApp({
 // function handleIcons(form) {
 //   const check_square = document.createElement("i");
 //   check_square.classList.add("fa-regular", "fa-square-check");
-//   const trash = document.createElement("i");
-//   trash.classList.add("fa-regular", "fa-trash-can");
 //   const h2_check = document.createElement("h2");
 //   h2_check.id = form.id + "check";
 //   h2_check.appendChild(check_square);
 //   h2_check.style.color = "white";
+//   const trash = document.createElement("i");
+//   trash.classList.add("fa-regular", "fa-trash-can");
 //   const h2_trash = document.createElement("h2");
 //   h2_trash.id = form.id + "trash";
 //   h2_trash.appendChild(trash);
