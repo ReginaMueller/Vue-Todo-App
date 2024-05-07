@@ -26,11 +26,15 @@
         <div class="todo-list" id="todo-list">
             <template v-for="(todo, index) of filteredTodos" :key="todo.id">
 
-                <form :class="todoType(todo)" @click="changeDone(todo)">
+                <form :class="todoType(todo)" @click="changeDone(todo)" @mouseover="hover = index"
+                    @mouseleave="hover = undefined">
                     <span>{{todo.description}}</span>
-                    <h2>
+                    <h2 v-show="isHidden(index)">
                         <i class="fa-solid fa-trash-can" @click="deleteTodo(index)"></i>
                     </h2>
+                    <script setup>
+                        defineEmits(['mouseover', 'mouseleave']);
+                    </script>
                     <h2>
                         <i class=" fa-regular fa-square-check"></i>
                     </h2>
@@ -39,6 +43,7 @@
         </div>
 
     </div>
+
     <script src="https://unpkg.com/vue@latest"></script>
     <script src="script.js"></script>
 </body>
